@@ -82,6 +82,7 @@ GEM
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
+    bindata (2.4.15)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -123,6 +124,8 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.8.0)
+    ip2location_ruby (8.7.3)
+      bindata (~> 2.4.15)
     irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
@@ -386,6 +389,7 @@ DEPENDENCIES
   capybara
   debug
   importmap-rails
+  ip2location_ruby (~> 8.7)
   jbuilder
   kamal
   pg (~> 1.1)
@@ -402,7 +406,6 @@ DEPENDENCIES
   tailwindcss-rails
   thruster
   turbo-rails
-  tzinfo-data
   web-console
 
 BUNDLED WITH

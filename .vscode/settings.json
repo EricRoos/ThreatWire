@@ -1,0 +1,3 @@
+{
+    "railsTestRunner.rspecCommand": "./bin/rails test"
+}

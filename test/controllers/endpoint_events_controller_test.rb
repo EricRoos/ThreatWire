@@ -41,7 +41,7 @@ class EndpointEventsControllerTest < ActionDispatch::IntegrationTest
 
   test "rejects event with invalid IP format" do
     make_request(base_params(raw_metadata: { ip: -1 }))
-    assert_response :unprocessable_entity
+    assert_response :bad_request
   end
 
   test "rejects event with missing raw_metadata" do
@@ -49,7 +49,7 @@ class EndpointEventsControllerTest < ActionDispatch::IntegrationTest
       p[:endpoint_event].delete(:raw_metadata)
     end
     make_request(params)
-    assert_response :unprocessable_entity
+    assert_response :bad_request
   end
 
   test "rejects event with missing event_type" do
@@ -57,16 +57,16 @@ class EndpointEventsControllerTest < ActionDispatch::IntegrationTest
       p[:endpoint_event].delete(:event_type)
     end
     make_request(params)
-    assert_response :unprocessable_entity
+    assert_response :bad_request
   end
 
   test "rejects event with unsupported event_type" do
     make_request(base_params(event_type: "DoesNotExist"))
-    assert_response :unprocessable_entity
+    assert_response :bad_request
   end
 
   test "rejects request with empty params" do
     make_request({})
-    assert_response :unprocessable_entity
+    assert_response :bad_request
   end
 end

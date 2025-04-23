@@ -1,3 +1,5 @@
+require "test_helper"
+
 class SshRejectionEventTest < ActiveSupport::TestCase
   fixtures :accounts
 

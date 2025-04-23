@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_10_003959) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_22_173341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,8 +30,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_10_003959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "account_id", null: false
+    t.datetime "timestamp"
     t.index ["account_id"], name: "index_endpoint_events_on_account_id"
     t.index ["endpoint_id"], name: "index_endpoint_events_on_endpoint_id"
+  end
+
+  create_table "ssh_rejection_facts", force: :cascade do |t|
+    t.string "ip"
+    t.integer "port"
+    t.string "ip_location"
+    t.datetime "timestamp", null: false
+    t.bigint "endpoint_event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["endpoint_event_id"], name: "index_ssh_rejection_facts_on_endpoint_event_id"
   end
 
   add_foreign_key "endpoint_events", "accounts"

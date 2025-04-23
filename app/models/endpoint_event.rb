@@ -7,6 +7,10 @@ class EndpointEvent < ApplicationRecord
   validates_presence_of :endpoint_id, :raw_metadata
   validate :validate_metadata_schema
 
+  ENABLED_FACTS = [
+    SshRejectionFact
+  ].freeze
+
   def self.schema(hash)
     self.declared_schema = hash
   end
@@ -19,14 +23,17 @@ class EndpointEvent < ApplicationRecord
     @metadata ||= raw_metadata
   end
 
-  def ip = metadata&.fetch("ip", nil)
-  def port = metadata&.fetch("port", nil)
-  def user = metadata&.fetch("user", nil)
-
-  private
+  def facts
+    @facts ||= ENABLED_FACTS.flat_map do |fact_class|
+      fact_class.from_event(self)
+    end
+  end
 
   def validate_metadata_schema
-    return if raw_metadata.blank?
+    if raw_metadata.blank?
+      errors.add(:raw_metadata, "metadata cannot be blank")
+      return
+    end
 
     event_schema.each do |key, expected_class|
       actual_value = metadata[key.to_s]

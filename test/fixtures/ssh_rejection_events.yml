@@ -1,0 +1,8 @@
+one:
+  account: one
+  event_type: SshRejectionEvent
+  endpoint_id: 0x987654321
+  raw_metadata:
+    ip: 192.168.1.1
+    port: 22
+    user: root
