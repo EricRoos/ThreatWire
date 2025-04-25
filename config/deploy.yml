@@ -2,12 +2,12 @@
 service: threat_wire
 
 # Name of the container image.
-image: your-user/threat_wire
+image: ericroos13/threat_wire
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - threatwire.redroosterdevelopment.com
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -17,15 +17,19 @@ servers:
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
-proxy:
+ssh:
+  user: cicd
+# Enable SSL auto certification via Let's Encrypt (and allow for multiple apps on one server).
+# Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
+proxy: 
   ssl: true
-  host: app.example.com
+  host: threatwire.redroosterdevelopment.com
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: your-user
+  username: ericroos13
 
   # Always use an access token rather than real password when possible.
   password:
