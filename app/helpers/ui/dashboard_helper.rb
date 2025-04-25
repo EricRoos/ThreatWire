@@ -1,0 +1,2 @@
+module Ui::DashboardHelper
+end

@@ -5,6 +5,7 @@ class EndpointEvent < ApplicationRecord
   belongs_to :account
 
   validates_presence_of :endpoint_id, :raw_metadata
+  validates_uniqueness_of :message_id, scope: :endpoint_id
   validate :validate_metadata_schema
 
   ENABLED_FACTS = [

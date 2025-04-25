@@ -69,3 +69,5 @@ gem "bcrypt", "~> 3.1"
 gem "simplecov", "~> 0.22.0", :group => :test
 
 gem "ip2location_ruby", "~> 8.7"
+
+gem "view_component", "~> 3.21"

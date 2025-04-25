@@ -43,7 +43,7 @@ class EndpointEventsController < ApplicationController
     metadata_params = type_from_params.declared_schema.keys
     raise UnsupportedTypeError, "Unsupported event type: #{type_from_params}" unless metadata_params
     params.require(:endpoint_event)
-      .permit(:event_type, :endpoint_id, :timestamp, raw_metadata: metadata_params)
+      .permit(:event_type, :endpoint_id, :timestamp, :message_id, raw_metadata: metadata_params)
       .to_h
       .except(:event_type)
       .tap do |event_params|
