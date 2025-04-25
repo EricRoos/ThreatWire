@@ -87,7 +87,6 @@ production:
   primary: &primary_production
     <<: *default
     database: threat_wire_production
-    password: <%= ENV["THREAT_WIRE_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: threat_wire_production_cache
