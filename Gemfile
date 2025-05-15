@@ -72,5 +72,5 @@ gem "ip2location_ruby", "~> 8.7"
 
 gem "view_component", "~> 3.21"
 
-gem "sentry-ruby", "~> 5.23"
+gem "sentry-ruby", "~> 5.24"
 gem "sentry-rails", "~> 5.23"
